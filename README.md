@@ -8,7 +8,6 @@ Vacuum Cleaner Agent
 ## 📋 Features
 
 - **Numpy** — The fundamental package for array computing with Python
-- **Board**  — Standard Board mechanism for Dojo tasks
 
 ## 🚀 Getting started with the app
 

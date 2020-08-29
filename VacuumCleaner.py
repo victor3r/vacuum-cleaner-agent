@@ -1,25 +1,30 @@
+import tkinter as tk
 from Board import Board
 
 class VacuumCleaner:
   def __init__(self, world):
+    self.time = 1000
     self.world = world
     self.world_columns = self.world.shape[1] - 1
     self.world_rows = self.world.shape[0] - 1
     self.position = {'x': 0, 'y': 0}
     self.cleaned_squares = 0
-    self.board = Board(self.world.shape[0], self.world.shape[1], world)
-    print('Este é o mundo inicial!')
-    self.board.board.draw()
-    print()
+    self.root = tk.Tk()
+    self.root.title('Agente aspirador de pó')
+    self.root.after(self.time, lambda: self.root.destroy())
+    Board(self.world, self.root)
+    self.root.mainloop()
 
   def aspirate(self):
     for pos in self.world:
       for square in pos:
         if square == 1:
           VacuumCleaner.clean(self)
-          self.board = Board(self.world.shape[0], self.world.shape[1], self.world)
-          self.board.board.draw()
-          print()
+          self.root = tk.Tk()
+          self.root.title('Agente aspirador de pó')
+          self.root.after(self.time, lambda: self.root.destroy())
+          Board(self.world, self.root)
+          self.root.mainloop()
         else:
           print('O bloco da linha: {}, coluna: {} já está limpo!'.format(self.position['x'], self.position['y']))
           print('Indo para o próximo...\n')

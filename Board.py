@@ -1,11 +1,13 @@
-import board
+import tkinter as tk
 
 class Board():
-  def __init__(self, rows, columns, world):
-    self.board = board.Board((rows, columns))
-    for x in range(len(world)):
-      for y in range(len(world[x])):
-        if world[x][y] == 0:
-          self.board[y, x] = ' '
+  def __init__(self, world, root):
+    self.world = world
+    self.root = root
+    for i in range(len(self.world)):
+      for j in range(len(self.world[i])):
+        if self.world[i][j] == 0:
+          tk.Label(self.root, text='    ', bg='grey').grid(row=i, column=j, ipadx=20, ipady=20, padx=10, pady=10)
         else:
-          self.board[y, x] = 'X'
+          tk.Label(self.root, text='####', bg='grey').grid(row=i, column=j, ipadx=20, ipady=20, padx=10, pady=10)
+
